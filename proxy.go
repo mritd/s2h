@@ -74,9 +74,9 @@ func transfer(dst io.WriteCloser, src io.ReadCloser) {
 }
 
 func serveHTTP(w http.ResponseWriter, r *http.Request) {
-	logrus.Infof("New Conn Accepted: %s => %s => [%s] %s", r.RemoteAddr, socket5Addr, r.Method, r.Host)
+	logrus.Infof("New Conn Accepted: %s => %s => [%s] %s", r.RemoteAddr, socks5Addr, r.Method, r.Host)
 	d := &net.Dialer{Timeout: 10 * time.Second}
-	dialer, err := proxy.SOCKS5("tcp", socket5Addr, nil, d)
+	dialer, err := proxy.SOCKS5("tcp", socks5Addr, nil, d)
 	if err != nil {
 		logrus.Errorf("Proxy Connect Failed: %v", err)
 		http.Error(w, err.Error(), http.StatusServiceUnavailable)

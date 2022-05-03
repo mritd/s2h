@@ -7,17 +7,17 @@ import (
 )
 
 var (
-	listenAddr  string
-	socket5Addr string
+	listenAddr string
+	socks5Addr string
 )
 
 var rootCmd = &cobra.Command{
 	Use:   "s2h",
-	Short: "A simple tool to convert socket5 proxy protocol to http proxy protocol",
+	Short: "A simple tool to convert socks5 proxy protocol to http proxy protocol",
 	Run: func(cmd *cobra.Command, args []string) {
-		logrus.Info("Starting Socket5 Proxy Convert Server...")
+		logrus.Info("Starting Socks5 Proxy Convert Server...")
 		logrus.Infof("HTTP Listen Address: %s", listenAddr)
-		logrus.Infof("Socket5 Server Address: %s", socket5Addr)
+		logrus.Infof("Socks5 Server Address: %s", socks5Addr)
 
 		err := http.ListenAndServe(listenAddr, http.HandlerFunc(serveHTTP))
 		if err != nil {
@@ -39,5 +39,5 @@ func init() {
 	})
 
 	rootCmd.PersistentFlags().StringVarP(&listenAddr, "listen", "l", "0.0.0.0:8081", "http listen address")
-	rootCmd.PersistentFlags().StringVarP(&socket5Addr, "socket5", "s", "127.0.0.1:1080", "remote socket5 listen address")
+	rootCmd.PersistentFlags().StringVarP(&socks5Addr, "socks5", "s", "127.0.0.1:1080", "remote socks5 listen address")
 }

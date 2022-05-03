@@ -1,6 +1,6 @@
-## Socket5 to HTTP
+## Socks5 to HTTP
 
-> 这是一个超简单的 Socket5 代理转换成 HTTP 代理的小工具。
+> 这是一个超简单的 Socks5 代理转换成 HTTP 代理的小工具。
 
 ### 如何安装？
 
@@ -23,7 +23,7 @@ docker pull mritd/s2h
 
 ```sh
 # -l 本地 HTTP 监听地址
-# -s 远程 Socket5 服务器地址
+# -s 远程 Socks5 服务器地址
 s2h -l 127.0.0.1:8081 -s 127.0.0.1:1080
 ```
 
